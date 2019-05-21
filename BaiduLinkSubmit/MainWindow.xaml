@@ -1,0 +1,21 @@
+﻿<Window x:Class="BaiduLinkSubmit.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BaiduLinkSubmit"
+        mc:Ignorable="d"
+        Title="百度资源提交工具" Height="500.929" Width="800">
+    <Grid>
+        <TextBox x:Name="api" Height="18" Margin="97,45,82,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="接口调用地址" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="Url" Margin="10,97,10,0" TextWrapping="Wrap" Text="" AcceptsReturn="True" Height="236" VerticalAlignment="Top"  />
+        <Label x:Name="label1_Copy" Content="提交链接：" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="submit" Content="提交" Grid.Column="1" Margin="0,43,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="56" Click="Submit_Click"/>
+        <Label x:Name="label1" Content="返回数据：" HorizontalAlignment="Left" Margin="10,339,8,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="returnData" Margin="10,368,10,45" TextWrapping="Wrap" Text=""/>
+
+        <Button x:Name="about" Content="关于" Margin="0,0,10,10" HorizontalAlignment="Right" Width="75" Height="19" VerticalAlignment="Bottom" Click="About_Click"/>
+    </Grid>
+</Window>

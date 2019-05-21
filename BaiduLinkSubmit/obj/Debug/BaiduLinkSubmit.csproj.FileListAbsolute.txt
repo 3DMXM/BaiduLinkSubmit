@@ -1,0 +1,17 @@
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\bin\Debug\BaiduLinkSubmit.exe.config
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\bin\Debug\BaiduLinkSubmit.exe
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\bin\Debug\BaiduLinkSubmit.pdb
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\obj\Debug\BaiduLinkSubmit.csprojAssemblyReference.cache
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\obj\Debug\MainWindow.g.cs
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\obj\Debug\App.g.cs
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\obj\Debug\BaiduLinkSubmit_MarkupCompile.cache
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\obj\Debug\BaiduLinkSubmit_MarkupCompile.lref
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\obj\Debug\MainWindow.baml
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\obj\Debug\BaiduLinkSubmit.g.resources
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\obj\Debug\BaiduLinkSubmit.Properties.Resources.resources
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\obj\Debug\BaiduLinkSubmit.csproj.GenerateResource.cache
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\obj\Debug\BaiduLinkSubmit.csproj.CoreCompileInputs.cache
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\obj\Debug\BaiduLinkSubmit.exe
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\obj\Debug\BaiduLinkSubmit.pdb
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\obj\Debug\About.g.cs
+D:\vs\BaiduLinkSubmit\BaiduLinkSubmit\obj\Debug\About.baml
