@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MyP>
+  <P1>
+    <Person id="cz001">
+      <Name>张三</Name>
+      <Age>18</Age>
+    </Person>
+    <Person id="cz002">
+      <Name>李四</Name>
+      <Age>19</Age>
+    </Person>
+    <Person id="cz003">
+      <Name>王五</Name>
+      <Age>20</Age>
+    </Person>
+  </P1>
+  <P2>
+    <Person>
+      <Name>张三2</Name>
+      <Age>18</Age>
+    </Person>
+    <Person>
+      <Name>李四2</Name>
+      <Age>19</Age>
+    </Person>
+    <Person>
+      <Name>王五2</Name>
+      <Age>20</Age>
+    </Person>
+  </P2>
+</MyP>
