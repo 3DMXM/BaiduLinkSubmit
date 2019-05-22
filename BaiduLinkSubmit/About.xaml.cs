@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace BaiduLinkSubmit
 {
@@ -22,6 +10,7 @@ namespace BaiduLinkSubmit
         public About()
         {
             InitializeComponent();
+            this.textBox.Text = "1.到百度资源平台(https://ziyuan.baidu.com/linksubmit/index)复制你的接口地址\n2.将要提交的链接粘贴进来\n3.点击'提交'按钮提交链接\n注意：链接是一行一个";
         }
     }
 }
