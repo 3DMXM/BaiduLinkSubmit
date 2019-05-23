@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using System.Xml;
 
 
 namespace BaiduLinkSubmit
@@ -20,20 +21,28 @@ namespace BaiduLinkSubmit
         public MainWindow()
         {
             InitializeComponent();
-            string str = "";
-            str = File.ReadAllText("API.ini");   //获取本地数据
+            try
+            {
+                string str = "";
+                str = File.ReadAllText("API.ini");   //获取本地数据
 
-            //API数据
-            Regex regAPI = new Regex("API=(.+)\n");
-            Match matchAPI = regAPI.Match(str);
-            String strAPI = matchAPI.Groups[1].Value;
-            this.api.Text = strAPI;
+                //API数据
+                Regex regAPI = new Regex("API=(.+)\n");
+                Match matchAPI = regAPI.Match(str);
+                String strAPI = matchAPI.Groups[1].Value;
+                this.api.Text = strAPI;
 
-            //sitemap数据
-            Regex regSitemap = new Regex("Sitemap=(.+)");
-            Match matchSitemap = regSitemap.Match(str);
-            String strSitemap = matchSitemap.Groups[1].Value;
-            this.Sitemap.Text = strSitemap;
+                //sitemap数据
+                Regex regSitemap = new Regex("Sitemap=(.+)");
+                Match matchSitemap = regSitemap.Match(str);
+                String strSitemap = matchSitemap.Groups[1].Value;
+                this.Sitemap.Text = strSitemap;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("未找到API.ini文件,请确认文件是否存在\n或请解压后运行");
+            }
+            
 
 
 
@@ -42,16 +51,7 @@ namespace BaiduLinkSubmit
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
             string api = this.api.Text;     //获取百度提供的API
-
-            string str1 = "API=" + api + "\n";
-            str1 += "Sitemap=" + this.Sitemap.Text ;
-            File.WriteAllText("API.ini", str1);
-
-            //使用POST进行提交
-            var request = (HttpWebRequest)WebRequest.Create(api);   //提交链接地址
-
-            var postData = this.Url.Text;  //获取需要提交的url链接,以换行分割
-
+                                    
             Regex reg = new Regex("data.zz.baidu.com(.+)site=(.+)token=");
             Regex reg2 = new Regex("data.zz.baidu.com(.+)appid=(.+)token=(.+)type=");
 
@@ -61,21 +61,38 @@ namespace BaiduLinkSubmit
                 if (this.Url.Text != "")
                 {
                     //提交数据
-                    var data = Encoding.ASCII.GetBytes(postData);
-                    request.Method = "POST";
-                    request.ContentType = "application/x-www-form-urlencoded";
-                    request.ContentLength = data.Length;
 
-                    using (var stream = request.GetRequestStream())
+                    try
                     {
-                        stream.Write(data, 0, data.Length);
+                        //使用POST进行提交
+                        var request = (HttpWebRequest)WebRequest.Create(api);   //提交链接地址
 
+                        var postData = this.Url.Text;  //获取需要提交的url链接,以换行分割
+
+                        var data = Encoding.ASCII.GetBytes(postData);
+                        request.Method = "POST";
+                        request.ContentType = "application/x-www-form-urlencoded";
+                        request.ContentLength = data.Length;
+
+                        using (var stream = request.GetRequestStream())
+                        {
+                            stream.Write(data, 0, data.Length);
+                        }
+                        var response = (HttpWebResponse)request.GetResponse();
+
+                        var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();    //返回值
+
+                        this.returnData.Text = responseString;    //显示返回值
+
+                        string str1 = "API=" + api + "\n";  //保存提交的数据
+                        str1 += "Sitemap=" + this.Sitemap.Text;
+                        File.WriteAllText("API.ini", str1);
                     }
-                    var response = (HttpWebResponse)request.GetResponse();
-
-                    var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();    //返回值
-
-                    this.returnData.Text = responseString;    //显示返回值
+                    catch (WebException ex)
+                    {
+                        //如果错误
+                        MessageBox.Show("错误:"+ex);                        
+                    }
                 }
                 else
                 {
@@ -86,11 +103,6 @@ namespace BaiduLinkSubmit
             {
                 MessageBox.Show("请输入正确的接口地址");
             }
-
-
-            
-           
-
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
@@ -103,23 +115,29 @@ namespace BaiduLinkSubmit
         {
             string Sitemap = this.Sitemap.Text;     //获取sitemap链接
 
-            //将XML文件加载进来
-            XDocument document = XDocument.Load(Sitemap);
-            //获取到XML的根元素进行操作
+            this.Url.Text = "获取中，请稍后....";
 
-            /*
-             * 
-             *  XElement root = document.Root;
-            XElement ele = root.Element("url1").Element("loc");
-            System.Xml.Linq.XDocument xdoc = System.Xml.Linq.XDocument.Load("person.xml");//读取xml文件
-            System.Xml.Linq.XElement xeRoot = xdoc.Root; //根节点 
-            System.Xml.Linq.XElement xele = xeRoot.Element("P1").Element("Person"); //子节点
-            MessageBox.Show("id=" + xele.Attribute("id").Value);  //cz001
+            try
+            {
+                XmlDocument xd = new XmlDocument();
+                xd.Load(Sitemap);
+                var c = xd["urlset"].ChildNodes;
 
-            */
+                string loc = "";
+                for (int i = 0; i < c.Count; i++)
+                {
+                    loc += c[i]["loc"].InnerXml + "\n";
+                }
+                this.Url.Text = loc;
 
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误:"+ex);
+              
+            }
 
         }
+       
     }
 }
