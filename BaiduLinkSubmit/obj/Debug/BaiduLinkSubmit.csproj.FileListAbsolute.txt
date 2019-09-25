@@ -32,3 +32,7 @@ C:\Users\xiaom\Downloads\BaiduLinkSubmit-master\BaiduLinkSubmit\obj\Debug\BaiduL
 C:\Users\xiaom\Downloads\BaiduLinkSubmit-master\BaiduLinkSubmit\obj\Debug\BaiduLinkSubmit.csproj.CoreCompileInputs.cache
 C:\Users\xiaom\Downloads\BaiduLinkSubmit-master\BaiduLinkSubmit\obj\Debug\BaiduLinkSubmit.exe
 C:\Users\xiaom\Downloads\BaiduLinkSubmit-master\BaiduLinkSubmit\obj\Debug\BaiduLinkSubmit.pdb
+C:\Users\xiaom\Downloads\BaiduLinkSubmit-master\BaiduLinkSubmit\bin\Debug\BaiduLinkSubmit.exe.manifest
+C:\Users\xiaom\Downloads\BaiduLinkSubmit-master\BaiduLinkSubmit\bin\Debug\BaiduLinkSubmit.application
+C:\Users\xiaom\Downloads\BaiduLinkSubmit-master\BaiduLinkSubmit\obj\Debug\BaiduLinkSubmit.exe.manifest
+C:\Users\xiaom\Downloads\BaiduLinkSubmit-master\BaiduLinkSubmit\obj\Debug\BaiduLinkSubmit.application

@@ -4,10 +4,6 @@ using System.Windows;
 using System.Net;
 using System.IO;
 using System.Text.RegularExpressions;
-
-using System.Xml.Linq;
-using System.Collections.Generic;
-using System.Xml.Serialization;
 using System.Xml;
 
 
@@ -20,7 +16,10 @@ namespace BaiduLinkSubmit
     {
         public MainWindow()
         {
+
             InitializeComponent();
+
+            new UpData().updatedVersion(false);
             try
             {
                 string str = "";
@@ -42,7 +41,7 @@ namespace BaiduLinkSubmit
             {
                 MessageBox.Show("未找到API.ini文件,请确认文件是否存在\n或请解压后运行");
             }
-            
+
 
 
 
@@ -51,7 +50,7 @@ namespace BaiduLinkSubmit
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
             string api = this.api.Text;     //获取百度提供的API
-                                    
+
             Regex reg = new Regex("data.zz.baidu.com(.+)site=(.+)token=");
             Regex reg2 = new Regex("data.zz.baidu.com(.+)appid=(.+)token=(.+)type=");
 
@@ -91,7 +90,7 @@ namespace BaiduLinkSubmit
                     catch (WebException ex)
                     {
                         //如果错误
-                        MessageBox.Show("错误:"+ex);                        
+                        MessageBox.Show("错误:" + ex);
                     }
                 }
                 else
@@ -126,18 +125,34 @@ namespace BaiduLinkSubmit
                 string loc = "";
                 for (int i = 0; i < c.Count; i++)
                 {
-                    loc += c[i]["loc"].InnerXml + "\n";
+                    if (c[i].NodeType == XmlNodeType.Element)
+                    {
+                        if (i < 2000)
+                        {
+                            loc += c[i]["loc"].InnerXml + "\n";
+                        }
+                        else
+                        {
+                            MessageBox.Show("sitemap链接超过2000条数据,为保证能成功提交，当前获取前面的2000条数据", "警告");
+
+                            goto 跳出循环;
+                        }
+                    }
+
+
                 }
+            跳出循环:
+
                 this.Url.Text = loc;
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误:"+ex);
-              
+                MessageBox.Show("错误:" + ex);
+
             }
 
         }
-       
+
     }
 }

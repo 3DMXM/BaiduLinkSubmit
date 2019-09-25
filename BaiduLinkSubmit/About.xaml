@@ -5,13 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BaiduLinkSubmit"
         mc:Ignorable="d"
-        Title="About" Height="269.848" Width="460.98">
+        Title="About" Height="269.848" Width="598.423">
     <Grid>
-
-
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="20,20,0,0" TextWrapping="Wrap" Text="作者：小莫" VerticalAlignment="Top" FontSize="16" Height="20" Width="80"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="20,53,0,0" TextWrapping="Wrap" Text="使用方法：" VerticalAlignment="Top"  FontSize="16"/>
         <TextBox x:Name="textBox" Margin="22,87,22,20" TextWrapping="Wrap" Text="TextBox"/>
+        <Button x:Name="button" Content="检测更新" HorizontalAlignment="Left" Margin="493,22,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
 
     </Grid>
 </Window>
